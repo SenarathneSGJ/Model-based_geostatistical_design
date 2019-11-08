@@ -1,1 +1,3 @@
-
+Steps:
+Install the R-package 'AirQualityRcpp' using the source file 'AirQualityRcpp_1.0.tar.gz'
+Use 'main_Clayton.R' file to run the R-programm 
