@@ -1,5 +1,5 @@
 
-library(SpatialSimEx) # This is an special R-package created for this example. 
+library(SpatialSimEx) # This is a special R-package created for this example. 
 library(mvtnorm)
 library(fields)
 library(Matrix)
