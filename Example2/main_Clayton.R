@@ -38,7 +38,7 @@ dist1 <- rdist(Site_Locs)
 dist_mat <- dist1/max(dist1)
 tot_sites <- nrow(dist_mat)
 
-data2017 <- read.csv("Meteorological_data2017.csv") # meteorological at the prediction locations
+data2017 <- read.csv("Meteorological_data2017.csv") # meteorological data at the prediction locations
 X1 <- (-1*data2017$Loc_Y)/3000000
 X2 <- data2017$Humidity/100
 X3 <- data2017$Wind_speed/10
