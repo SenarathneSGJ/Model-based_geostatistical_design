@@ -1,5 +1,5 @@
 
-library(SpatialSimEx) # This is a special R-package created for this example. 
+library(MaternEx1) # This is a special R-package created for this example. 
 library(mvtnorm)
 library(fields)
 library(Matrix)
@@ -29,11 +29,11 @@ if(Scenario==1){
   Sp.range <- 0.8
 }
 
-mu_prior1 <- c(5,-2.8,8,log(1.2),log(.7/Sp.range),log(Sp.range))  # prior means for model 1
-Sigma_prior1 <- c(4,4,4,0.25,0.25,0.25)   # prior variances for model 1
+mu_prior1 <- c(5,-2.8,8,log(1.2),log(.7/Sp.range),log(Sp.range),log(1.5))  # prior means for model 1
+Sigma_prior1 <- c(4,4,4,0.25,0.25,0.25,0.25)   # prior variances for model 1
 
-mu_prior2 <- c(3.8,-1.5,-1.2,log(.6/Sp.range),log(Sp.range))   # prior means for model 2
-Sigma_prior2 <- c(0.125,0.125,0.125,0.125,0.125)   # prior variances for model 2
+mu_prior2 <- c(3.8,-1.5,-1.2,log(.6/Sp.range),log(Sp.range),log(0.25))   # prior means for model 2
+Sigma_prior2 <- c(0.125,0.125,0.125,0.125,0.125,0.25)   # prior variances for model 2
 
 mu_Ltau <- log(.7/.3) # prior mean for logit(tau)
 Sigma_Ltau <- 0.25    # prior variance for logit(tau)
@@ -47,17 +47,20 @@ prior_b12 <- rnorm(N,mu_prior[3],sqrt(Sigma_prior[3,3]))
 prior_varY <- rnorm(N,mu_prior[4],sqrt(Sigma_prior[4,4]))
 prior_r11.r12 <- rnorm(N,mu_prior[5],sqrt(Sigma_prior[5,5]))
 prior_r12 <- rnorm(N,mu_prior[6],sqrt(Sigma_prior[6,6]))
+prior_log_K1 <- rnorm(N,mu_prior[7],sqrt(Sigma_prior[7,7]))
 
-prior_b20 <- rnorm(N,mu_prior[7],sqrt(Sigma_prior[7,7]))
-prior_b21 <- rnorm(N,mu_prior[8],sqrt(Sigma_prior[8,8]))
-prior_b22 <- rnorm(N,mu_prior[9],sqrt(Sigma_prior[9,9]))
-prior_r21.r22 <- rnorm(N,mu_prior[10],sqrt(Sigma_prior[10,10]))
-prior_r22 <- rnorm(N,mu_prior[11],sqrt(Sigma_prior[11,11]))
 
-logit_tau <- rnorm(N,mu_prior[12],sqrt(Sigma_prior[12,12]))
+prior_b20 <- rnorm(N,mu_prior[8],sqrt(Sigma_prior[8,8]))
+prior_b21 <- rnorm(N,mu_prior[9],sqrt(Sigma_prior[9,9]))
+prior_b22 <- rnorm(N,mu_prior[10],sqrt(Sigma_prior[10,10]))
+prior_r21.r22 <- rnorm(N,mu_prior[11],sqrt(Sigma_prior[11,11]))
+prior_r22 <- rnorm(N,mu_prior[12],sqrt(Sigma_prior[12,12]))
+prior_log_K2 <- rnorm(N,mu_prior[13],sqrt(Sigma_prior[13,13]))
+
+logit_tau <- rnorm(N,mu_prior[14],sqrt(Sigma_prior[14,14]))
 
 # Initial particle set
-prior <- data.frame(prior_b10,prior_b11,prior_b12,prior_varY,prior_r11.r12,prior_r12,prior_b20,prior_b21,prior_b22,prior_r21.r22,prior_r22,logit_tau)
+prior <- data.frame(prior_b10,prior_b11,prior_b12,prior_varY,prior_r11.r12,prior_r12,prior_log_K1,prior_b20,prior_b21,prior_b22,prior_r21.r22,prior_r22,prior_log_K2,logit_tau)
 
 iSigma_prior <- solve(Sigma_prior)
 log_det_prior <- log(det(Sigma_prior))
