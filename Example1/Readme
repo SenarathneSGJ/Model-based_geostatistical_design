@@ -1,3 +1,3 @@
 Steps:
-Install the R-package 'SpatialSimEx' using the source file 'SpatialSimEx_1.0.tar.gz'
+Install the R-package 'MaternEx1' using the source file 'MaternEx1_1.0.tar.gz'
 Use 'main_Clayton.R' file to run the R-programm for each design scenario with the given number of design points
