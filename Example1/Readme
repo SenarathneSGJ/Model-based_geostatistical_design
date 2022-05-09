@@ -1,3 +1,4 @@
 Steps:
-Install the R-package 'MaternEx1' using the source file 'MaternEx1_1.0.tar.gz'
+First install the dependency packages:  Rccp, RcppArmadillo and BH before installing the R-package 'MaternEx1'. 
+Install the R-package 'MaternEx1' using the source file 'MaternEx1_1.0.tar.gz' (You may need Rtools to install this package from the source file.)
 Use 'main_Clayton.R' file to run the R-programm for each design scenario with the given number of design points
